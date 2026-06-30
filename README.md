@@ -13,37 +13,38 @@ This project investigates the impact of a baseball player's batting side on thei
 ## Project Structure
 
 ```
-├── Left_Right/                          # Main analysis notebooks
-│   ├── 1.hitting_individuals_api.ipynb  # Fetch individual hitter data via API
-│   ├── 2.merge.ipynb                    # Merge and consolidate data
-│   ├── 3.data_analysis.ipynb            # Core analysis & visualizations
-│   ├── all_hitters_historical.csv       # Consolidated hitter data
-│   └── data_attack/                     # Processed data by year
+├── notebooks/
+│   ├── analysis/                        # Main analysis notebooks
+│   │   ├── 1.hitting_individuals_api.ipynb
+│   │   ├── 2.merge.ipynb
+│   │   └── 3.data_analysis.ipynb
+│   ├── data_collection/                 # Web scraping notebooks
+│   │   ├── hitting_team_scrape.ipynb
+│   │   └── team_standing_scrape.ipynb
+│   ├── preprocessing/                   # Data cleaning and standardization
+│   │   └── preprocess.ipynb
+│   ├── eda/                             # Exploratory Data Analysis
+│   │   ├── individual.ipynb
+│   │   └── team_scale.ipynb
+│   └── scratch/                         # One-off notebooks and experiments
+│       └── something.ipynb
 │
-├── data/                                # Raw data repository
-│   ├── 2013-2024/                       # Yearly data folders
-│   │   ├── hitters_individual.csv       # Individual hitter statistics
-│   │   ├── team_standings.csv           # Team standings data
-│   │   └── team_stats.csv               # Aggregate team statistics
-│   └── example_data.xlsx                # Sample data reference
+├── data/                                # Raw yearly data
+│   ├── 2013/ ... 2024/                  # Season folders
+│   │   ├── hitters_individual.csv
+│   │   ├── team_standings.csv
+│   │   └── team_stats.csv
+│   └── processed/                       # Cleaned and merged datasets
+│       └── left_right/
+│           ├── all_hitters_historical.csv
+│           └── data_attack/             # Per-season processed hitter data
 │
-├── data_collection_outside/             # Data collection scripts
-│   ├── hitting_team_scrape.ipynb        # Web scraper for team hitting data
-│   └── team_standing_scrape.ipynb       # Web scraper for standings
-│
-├── preprocessing/                       # Data preparation
-│   └── preprocess.ipynb                 # Data cleaning & standardization
-│
-├── EDA/                                 # Exploratory Data Analysis
-│   ├── individual.ipynb                 # Individual hitter EDA
-│   └── team_scale.ipynb                 # Team-level EDA
+├── outputs/                             # Final exported reports
+│   ├── output.csv
+│   └── output.xlsx
 │
 ├── visualizations/                      # Output visualizations directory
-│
 ├── venv/                                # Python virtual environment
-│
-├── output.csv                           # Analysis output file
-├── output.xlsx                          # Excel output file
 └── README.md                            # This file
 ```
 
@@ -71,23 +72,23 @@ This project investigates the impact of a baseball player's batting side on thei
 
 #### Step 1: Data Collection (Optional - data already included)
 
-- Run `data_collection_outside/hitting_team_scrape.ipynb` to fetch team hitting data
-- Run `data_collection_outside/team_standing_scrape.ipynb` to fetch standings
+- Run `notebooks/data_collection/hitting_team_scrape.ipynb` to fetch team hitting data
+- Run `notebooks/data_collection/team_standing_scrape.ipynb` to fetch standings
 
 #### Step 2: Data Preprocessing
 
-- Run `preprocessing/preprocess.ipynb` to clean and standardize data
+- Run `notebooks/preprocessing/preprocess.ipynb` to clean and standardize data
 
 #### Step 3: Main Analysis
 
-- Run `Left_Right/1.hitting_individuals_api.ipynb` to fetch individual hitter data
-- Run `Left_Right/2.merge.ipynb` to consolidate all data sources
-- Run `Left_Right/3.data_analysis.ipynb` for analysis and visualizations
+- Run `notebooks/analysis/1.hitting_individuals_api.ipynb` to fetch individual hitter data
+- Run `notebooks/analysis/2.merge.ipynb` to consolidate all data sources
+- Run `notebooks/analysis/3.data_analysis.ipynb` for analysis and visualizations
 
 #### Step 4: Exploratory Analysis (Optional)
 
-- Run `EDA/individual.ipynb` for individual hitter insights
-- Run `EDA/team_scale.ipynb` for team-level patterns
+- Run `notebooks/eda/individual.ipynb` for individual hitter insights
+- Run `notebooks/eda/team_scale.ipynb` for team-level patterns
 
 ---
 
@@ -106,7 +107,7 @@ This project investigates the impact of a baseball player's batting side on thei
 - `data/[YEAR]/hitters_individual.csv` - Individual player stats by year
 - `data/[YEAR]/team_standings.csv` - Team standings data
 - `data/[YEAR]/team_stats.csv` - Aggregate team statistics
-- `Left_Right/all_hitters_historical.csv` - Consolidated historical dataset
+- `data/processed/left_right/all_hitters_historical.csv` - Consolidated historical dataset
 
 ---
 
@@ -124,7 +125,7 @@ This project investigates the impact of a baseball player's batting side on thei
 
 ## Analysis Output
 
-The main analysis notebook (`Left_Right/3.data_analysis.ipynb`) generates:
+The main analysis notebook (`notebooks/analysis/3.data_analysis.ipynb`) generates:
 
 - Distribution comparisons between left and right-handed batters
 - Trend analysis across seasons (2013-2024)
@@ -175,5 +176,6 @@ pip install -r requirements.txt
 
 ## Questions?
 
-For more details about the research question and methodology, see the markdown sections in `Left_Right/3.data_analysis.ipynb`.
+For more details about the research question and methodology, see the markdown sections in `notebooks/analysis/3.data_analysis.ipynb`.
+
 # MLB_analysis
